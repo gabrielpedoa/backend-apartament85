@@ -6,4 +6,4 @@ const categoryPayload = z.object({
   description: z.string({ required_error: 'description is required' }).min(1),
 });
 
-export class CreateCategoryDto extends createZodDto(categoryPayload) {}
+export class CategoryDto extends createZodDto(categoryPayload) {}
