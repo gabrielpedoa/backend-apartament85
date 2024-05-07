@@ -1,9 +1,10 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { DefaultEntity } from './default.entity';
+import { CategoryEntity } from './category.entity';
 
-@Entity({name: "products"})
+@Entity({ name: 'products' })
 export class ProductEntity extends DefaultEntity {
-  @Column()
+  @Column({ name: 'categoryId' })
   categoryId: number;
   @Column()
   price: number;
@@ -11,4 +12,7 @@ export class ProductEntity extends DefaultEntity {
   quantity: number;
   @Column()
   dueDate: string;
+  @ManyToOne(() => CategoryEntity, (category) => category.products)
+  @JoinColumn({ name: 'categoryId' })
+  category: CategoryEntity;
 }

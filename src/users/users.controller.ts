@@ -15,12 +15,12 @@ import { IUser } from 'src/infra/repository/user.repository';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  async register(@Body() data: UserDto) {
-    const user = await this.usersService.register(data);
+  @Post('create')
+  async create(@Body() data: UserDto) {
+    const user = await this.usersService.create(data);
     return user;
   }
-  @Get()
+  @Get('list')
   async loadAll() {
     const user = await this.usersService.loadAll();
     return user;

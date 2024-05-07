@@ -14,7 +14,7 @@ export class UsersService {
      * encrypt ?!?
      */
   ) {}
-  async register(userDto: UserDto) {
+  async create(userDto: UserDto) {
     const verifyEmailAlreadyUsed = await this.userRepository.loadByEmail(
       userDto.email,
     );
@@ -24,11 +24,18 @@ export class UsersService {
       ...userDto,
     });
     const { password, ...rest } = user;
-    return rest;
+    return {
+      status: 'CREATED',
+      rest,
+    };
   }
 
   async loadAll() {
-    return await this.userRepository.loadAll();
+    const users = await this.userRepository.loadAll();
+    const returnWithoutPassword = users.map(({ password, ...rest }) => rest);
+    return {
+      results: returnWithoutPassword,
+    };
   }
 
   async loadById(id: number) {
