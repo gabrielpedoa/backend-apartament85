@@ -8,4 +8,4 @@ import { RepositoryModule } from 'src/infra/repository/repository.module';
   controllers: [CategoryController],
   providers: [CategoryService],
 })
-export class CategoryModule {}
+export class CategoryModule {}  
