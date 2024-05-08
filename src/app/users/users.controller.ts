@@ -6,12 +6,15 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserDto } from './dto/userDto';
 import { IUser } from 'src/infra/repository/user.repository';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('/api/users')
+@UseGuards(AuthGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

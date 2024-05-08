@@ -10,9 +10,6 @@ export class UsersService {
   constructor(
     @Inject('userRepository')
     protected userRepository: UserRepository,
-    /**
-     * encrypt ?!?
-     */
   ) {}
   async create(userDto: UserDto) {
     const verifyEmailAlreadyUsed = await this.userRepository.loadByEmail(
@@ -40,6 +37,12 @@ export class UsersService {
 
   async loadById(id: number) {
     const user = await this.userRepository.loadById(String(id));
+    if (!user) throw new NotFoundException('Usuario não encontrado');
+    return user;
+  }
+
+  async loadByEmail(email: string) {
+    const user = await this.userRepository.loadByEmail(String(email));
     if (!user) throw new NotFoundException('Usuario não encontrado');
     return user;
   }

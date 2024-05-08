@@ -7,12 +7,15 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CategoryDto } from './dto/create-category.dto';
 import { ICategory } from 'src/infra/repository/category.repository';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('api/category')
+@UseGuards(AuthGuard)
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 

@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { GlobalExceptionFilter } from './config/exceptions/filters/globalFilter';
 import { NotFoundExceptionFilter } from './config/exceptions/filters/notFoundFilter';
 import { PayloadExceptionFilter } from './config/exceptions/filters/payloadFilter';
 import { UnauthorizedExceptionFilter } from './config/exceptions/filters/unauthorizedFilter';
 import * as dotenv from 'dotenv';
+import { AppModule } from './app/app.module';
 
 dotenv.config();
 
