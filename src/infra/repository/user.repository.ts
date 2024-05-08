@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { UserEntity } from '../entities/user.entity.ts';
-import { UserDto } from 'src/users/dto/userDto';
+import { UserDto } from 'src/app/users/dto/userDto.js';
 
 export type IUser = {
   id: number;
