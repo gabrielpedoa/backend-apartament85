@@ -1,8 +1,11 @@
 import { z } from 'nestjs-zod/z';
 import { createZodDto } from 'nestjs-zod';
 
-export const productPayload = z.object({
-    
-})
+const productPayload = z.object({
+  name: z.string().min(1),
+  categoryId: z.number(),
+  quantity: z.number(),
+  dueDate: z.string(),
+});
 
-export class CreateProductDto {}
+export class ProductDto extends createZodDto(productPayload) {}
